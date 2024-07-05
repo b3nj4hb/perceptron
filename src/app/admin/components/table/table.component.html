@@ -2,28 +2,48 @@
 <canvas id="chart" class="max-h-36 max-w-80">{{chart}}</canvas>
 
 <div class="relative flex h-10 w-full min-w-[200px] max-w-[40rem] gap-2 mt-5">
-  <select [(ngModel)]="filterGrade" (ngModelChange)="applyFilters()">
-    <option value="">
-      Seleccione un grado
-    </option>
-    <option *ngFor="let grade of grades" [value]="grade">
-      {{ grade }} Grado
-    </option>
-  </select>
-  <select [(ngModel)]="filterSection" (ngModelChange)="applyFilters()">
-    <option value="">
-      Seleccione una Sección
-    </option>
-    <option *ngFor="let section of sections" [value]="section">
-      Sección {{ section }}
-    </option>
-  </select>
+  <div>
+    <label for="filterGrade" class="text-sm font-medium text-gray-900 hidden"> Headliner </label>
+
+    <select
+      [(ngModel)]="filterGrade"
+      (ngModelChange)="applyFilters()"
+      name="filterGrade"
+      id="filterGrade"
+      class="h-full w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
+    >
+      <option value="">
+        Seleccione un grado
+      </option>
+      <option *ngFor="let grade of grades" [value]="grade">
+        {{ grade }} Grado
+      </option>
+    </select>
+  </div>
+  <div>
+    <label for="filterSection" class="text-sm font-medium text-gray-900 hidden"> Headliner </label>
+
+    <select
+      [(ngModel)]="filterSection"
+      (ngModelChange)="applyFilters()"
+      name="filterSection"
+      id="filterSection"
+      class="h-full w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
+    >
+      <option value="">
+        Seleccione una sección
+      </option>
+      <option *ngFor="let section of sections" [value]="section">
+        Sección {{ section }}
+      </option>
+    </select>
+  </div>
   <div class="relative flex-1">
       <input
           [(ngModel)]="filter"
           (ngModelChange)="applyFilters()"
           type="text"
-          class="relative peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+          class="relative peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
           placeholder=""
           required
       />
