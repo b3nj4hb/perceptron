@@ -1,10 +1,10 @@
 <div>
 	<h2>Student Performance Chart</h2>
-	<div id="chart">
+	<!-- <div id="chart">
 		<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
 			[plotOptions]="chartOptions.plotOptions" [dataLabels]="chartOptions.dataLabels">
 		</apx-chart>
-	</div>
+	</div> -->
 </div>
 
 <table class="table-auto w-full">
@@ -24,10 +24,12 @@
 			<td class="">{{student.grade}} Grado</td>
 			<td class="">Sección {{student.section}}</td>
 			<td class="">
-				<button (click)="loadStudentChart(student.id)"
+				<!-- <button (click)="loadStudentChart(student.id)"
 					class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
 					Ampliar
-				</button>
+				</button> -->
+				<!-- <app-chart [math]=2 [ct]=3></app-chart> -->
+				<app-chart [math]=student.performance.math [ct]=student.performance.ct></app-chart>
 			</td>
 		</tr>
 	</tbody>

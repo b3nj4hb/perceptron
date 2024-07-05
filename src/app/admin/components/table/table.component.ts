@@ -3,12 +3,12 @@ import { StudentService } from '../../services/student.service';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import {
-	ChartComponent,
 	ApexAxisChartSeries,
 	ApexChart,
 	ApexXAxis,
 	ApexPlotOptions
 } from 'ng-apexcharts';
+import { ChartComponent } from '../chart/chart.component';
 
 export type ChartOptions = {
 	series: ApexAxisChartSeries;
@@ -21,7 +21,7 @@ export type ChartOptions = {
 @Component({
 	selector: 'app-table',
 	standalone: true,
-	imports: [CommonModule, NgApexchartsModule],
+	imports: [CommonModule, NgApexchartsModule, ChartComponent],
 	templateUrl: './table.component.html',
 	styleUrls: ['./table.component.scss']
 })
