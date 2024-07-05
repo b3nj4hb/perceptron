@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-action-button',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './action-button.component.scss'
 })
 export class ActionButtonComponent {
-
+  @Input({ required: true }) link!: string;
 }
