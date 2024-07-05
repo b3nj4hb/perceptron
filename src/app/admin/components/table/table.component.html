@@ -1,4 +1,12 @@
-<canvas id="chart" class="max-h-36 max-w-80">{{chart}}</canvas>
+<div>
+	<h2>Student Performance Chart</h2>
+	<div id="chart">
+		<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+			[plotOptions]="chartOptions.plotOptions" [dataLabels]="chartOptions.dataLabels">
+		</apx-chart>
+	</div>
+</div>
+
 <table class="table-auto w-full">
 	<thead>
 		<tr>
@@ -18,5 +26,4 @@
 			<td class="">Ampliar</td>
 		</tr>
 	</tbody>
-	<!-- <h1>{{this.students[0]['id']}}</h1> -->
 </table>
