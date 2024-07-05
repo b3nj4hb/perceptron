@@ -1,26 +1,22 @@
 <canvas id="chart" class="max-h-36 max-w-80">{{chart}}</canvas>
 <table class="table-auto w-full">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombres y Apellidos</th>
-            <th>Grado</th>
-            <th>Sección</th>
-            <th>Desempeño</th>
-            <th>Math</th>
-            <th>CT</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of students" class="">
-            <td class="">{{student.code}}</td>
-            <td class="">{{student.name}} {{student.lastName}}</td>
-            <td class="">{{student.grade}} Grado</td>
-            <td class="">Sección {{student.section}}</td>
-            <td class="">Ampliar</td>
-            <td class="">{{student.performance.math}}</td>
-            <td class="">{{student.performance.ct}}</td>
-        </tr>
-    </tbody>
-    <!-- <h1>{{this.students[0]['id']}}</h1> -->
+	<thead>
+		<tr>
+			<th>Código</th>
+			<th>Nombres y Apellidos</th>
+			<th>Grado</th>
+			<th>Sección</th>
+			<th>Desempeño</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let student of students" class="">
+			<td class="">{{student.code}}</td>
+			<td class="">{{student.name}} {{student.lastName}}</td>
+			<td class="">{{student.grade}} Grado</td>
+			<td class="">Sección {{student.section}}</td>
+			<td class="">Ampliar</td>
+		</tr>
+	</tbody>
+	<!-- <h1>{{this.students[0]['id']}}</h1> -->
 </table>
