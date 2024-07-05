@@ -33,19 +33,25 @@ export class TableComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.listStudent();
-		this.loadStudentChart(9);
+		// Inicializar el gráfico con datos vacíos o iniciales
+		this.chartOptions = {
+			series: [{ data: [] }],
+			chart: { type: 'bar', height: 350 },
+			plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+			dataLabels: { enabled: false },
+			xaxis: { categories: [] }
+		};
 	}
 
 	loadStudentChart(id: number) {
 		this.StudentService.getStudentId(id).subscribe(student => {
-			this.showChart(student);
+			this.updateChart(student);
 		});
 	}
 
 	listStudent() {
 		this.StudentService.getStudent().subscribe(data => {
 			this.students = data;
-			console.log(this.students[0]);
 		});
 	}
 
@@ -58,9 +64,7 @@ export class TableComponent implements OnInit {
 		return '';
 	}
 
-	showChart(student: any) {
-		const performanceLabels = [this.getPerformanceLabel(student.performance.math), this.getPerformanceLabel(student.performance.ct)];
-
+	updateChart(student: any) {
 		this.chartOptions = {
 			series: [{
 				data: [student.performance.math, student.performance.ct]
