@@ -1,0 +1,25 @@
+<table class="table-auto">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombres y Apellidos</th>
+            <th>Grado</th>
+            <th>Sección</th>
+            <th>Desempeño</th>
+            <th>Math</th>
+            <th>CT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.grade}}</td>
+            <td>{{student.section}}</td>
+            <td>Ampliar</td>
+            <td>{{student.performance.math}}</td>
+            <td>{{student.performance.ct}}</td>
+        </tr>
+    </tbody>
+    <!-- <h1>{{this.students[0]['id']}}</h1> -->
+</table>

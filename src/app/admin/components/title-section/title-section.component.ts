@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TitleSectionComponent {
   @Input({ required: true }) title!: string;
+  @Input({ required: false }) subtitle!: string;
 }
