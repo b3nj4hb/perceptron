@@ -9,6 +9,7 @@ import {
 	ApexPlotOptions
 } from 'ng-apexcharts';
 import { ChartComponent } from '../chart/chart.component';
+import { initFlowbite } from 'flowbite';
 
 export type ChartOptions = {
 	series: ApexAxisChartSeries;
@@ -53,6 +54,9 @@ export class TableComponent implements OnInit {
 		this.StudentService.getStudent().subscribe(data => {
 			this.students = data;
 		});
+		setTimeout(() => {
+			initFlowbite();
+		}, 500);
 	}
 
 	getPerformanceLabel(score: number): string {
