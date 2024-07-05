@@ -21,6 +21,6 @@ export class StudentService {
 	}
 
 	getStudentId(id: number) {
-		return this.http.get(this.urlEndPoint + { id })
+		return this.http.get(this.urlEndPoint + "/" + id)
 	}
 }

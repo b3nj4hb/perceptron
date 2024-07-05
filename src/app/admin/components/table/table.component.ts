@@ -17,7 +17,7 @@ export class TableComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.listStudent()
-		this.loadStudentChart(1)
+		this.loadStudentChart(8)
 	}
 
 	loadStudentChart(id: number) {
