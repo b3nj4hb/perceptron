@@ -19,4 +19,8 @@ export class StudentService {
   getStudent() {
     return this.http.get<Student[]>(this.urlEndPoint);
   }
+
+  getStudentId(id: number) {
+    return this.http.get<Student>(this.urlEndPoint + '/' + id);
+  }
 }

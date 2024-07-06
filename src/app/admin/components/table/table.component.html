@@ -1,35 +1,28 @@
-
-<canvas id="chart" class="max-h-36 max-w-80">{{chart}}</canvas>
-
-<div class="relative flex h-10 w-full min-w-[200px] max-w-[40rem] gap-2 mt-5">
+<div class="grid grid-cols-3 gap-2 mt-5">
   <div>
-    <label for="filterGrade" class="text-sm font-medium text-gray-900 hidden"> Headliner </label>
-
+    <label for="filterGrade" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Grado:</label>
     <select
       [(ngModel)]="filterGrade"
       (ngModelChange)="applyFilters()"
       name="filterGrade"
       id="filterGrade"
-      class="h-full w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
-    >
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option value="">
         Seleccione un grado
       </option>
       <option *ngFor="let grade of grades" [value]="grade">
-        {{ grade }} Grado
+        {{ grade }} grado
       </option>
     </select>
   </div>
   <div>
-    <label for="filterSection" class="text-sm font-medium text-gray-900 hidden"> Headliner </label>
-
+    <label for="filterSection" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sección</label>
     <select
       [(ngModel)]="filterSection"
       (ngModelChange)="applyFilters()"
       name="filterSection"
       id="filterSection"
-      class="h-full w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm"
-    >
+      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
       <option value="">
         Seleccione una sección
       </option>
@@ -38,51 +31,53 @@
       </option>
     </select>
   </div>
-  <div class="relative flex-1">
+  <div>
+    <label for="filter" class="block mb-2 text-sm font-medium text-gray-900  dark:text-white">Nombre:</label>
+    <div class="relative">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+      </div>
       <input
-          [(ngModel)]="filter"
-          (ngModelChange)="applyFilters()"
-          type="text"
-          class="relative peer h-full w-full rounded-[7px] border border-blue-gray-200  px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-red-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
-          placeholder=""
-          required
-      />
-      <label
-          class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-red-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-red-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-red-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
-      >
-          Nombre
-      </label>
+        [(ngModel)]="filter"
+        (ngModelChange)="applyFilters()"
+        type="search"
+        id="filter"
+        class="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Buscar..."
+        required />
+    </div>
   </div>
-
-  <!-- <button
-      class=" right-1 top-1 z-10 select-none rounded bg-[#ff9853] py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white transition-all hover:shadow-lg hover:bg-red-600 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85]"
-      (click)="applyFilters()"
-  >
-      Buscar
-  </button> -->
 </div>
-<table class="table-auto w-full mt-5">
-    <thead>
-        <tr>
-            <th>Código</th>
-            <th>Nombres y Apellidos</th>
-            <th>Grado</th>
-            <th>Sección</th>
-            <th>Desempeño</th>
-            <th>Math</th>
-            <th>CT</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of filteredStudents" class="">
-            <td class="">{{student.code}}</td>
-            <td class="">{{student.name}} {{student.lastName}}</td>
-            <td class="">{{student.grade}} Grado</td>
-            <td class="">Sección {{student.section}}</td>
-            <td class="">Ampliar</td>
-            <td class="">{{student.performance.math}}</td>
-            <td class="">{{student.performance.ct}}</td>
-        </tr>
-    </tbody>
-    <!-- <h1>{{this.students[0]['id']}}</h1> -->
+<table class="w-full text-sm text-center rtl:text-right text-gray-500 dark:text-gray-400 mt-5">
+  <thead class=" text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+		<tr>
+			<th>Código</th>
+			<th>Nombres y Apellidos</th>
+			<th>Grado</th>
+			<th>Sección</th>
+			<th>Desempeño</th>
+		</tr>
+	</thead>
+	<tbody>
+    <ng-container *ngFor="let student of filteredStudents; let i = index">
+      <tr class="text-center">
+        <td>{{student.code}}</td>
+        <td>{{student.name}} {{student.lastName}}</td>
+        <td>{{student.grade}} Grado</td>
+        <td>Sección {{student.section}}</td>
+        <td>
+          <button (click)="toggleRow(i)" class="bg-blue-500 text-white p-2 rounded">
+            Ver más
+          </button>
+        </td>
+      </tr>
+      <tr *ngIf="expandedRows[i]" class="text-center">
+        <td colspan="5">
+          <app-chart [math]="student.performance.math" [ct]="student.performance.ct"></app-chart>
+        </td>
+      </tr>
+    </ng-container>
+	</tbody>
 </table>

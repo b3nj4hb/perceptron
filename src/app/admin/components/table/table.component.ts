@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../../services/student.service';
 import { CommonModule } from '@angular/common';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { FormsModule } from '@angular/forms';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -10,6 +11,7 @@ import {
 } from 'ng-apexcharts';
 import { ChartComponent } from '../chart/chart.component';
 import { initFlowbite } from 'flowbite';
+import { Student } from '../../classes/student';
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
@@ -22,12 +24,21 @@ export type ChartOptions = {
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [CommonModule, NgApexchartsModule, ChartComponent],
+  imports: [CommonModule, NgApexchartsModule, ChartComponent, FormsModule],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  students: any;
+  students: Student[] = [];
+
+  filteredStudents: Student[] = [];
+  filter = '';
+  filterSection = '';
+  filterGrade = '';
+  expandedRows: { [key: number]: boolean } = {};
+  sections: string[] = [];
+  grades: number[] = [];
+
   public chartOptions: Partial<ChartOptions>;
 
   constructor(private StudentService: StudentService) {}
@@ -53,6 +64,8 @@ export class TableComponent implements OnInit {
   listStudent() {
     this.StudentService.getStudent().subscribe((data) => {
       this.students = data;
+      this.applyFilters();
+      this.buildGradeAndSectionArray();
     });
     setTimeout(() => {
       initFlowbite();
@@ -68,7 +81,7 @@ export class TableComponent implements OnInit {
     return '';
   }
 
-  updateChart(student: any) {
+  updateChart(student: Student) {
     this.chartOptions = {
       series: [
         {
@@ -98,5 +111,35 @@ export class TableComponent implements OnInit {
         },
       },
     };
+  }
+
+  toggleRow(index: number) {
+    this.expandedRows[index] = !this.expandedRows[index];
+  }
+
+  applyFilters(): void {
+    this.filteredStudents = this.students.filter((student) => {
+      return (
+        (!this.filter ||
+          student.name.toLowerCase().includes(this.filter.toLowerCase()) ||
+          student.lastName.toLowerCase().includes(this.filter.toLowerCase()) ||
+          student.code.toString().includes(this.filter.toLowerCase())) &&
+        (!this.filterSection || student.section === this.filterSection) &&
+        (!this.filterGrade || student.grade === parseInt(this.filterGrade))
+      );
+    });
+  }
+
+  buildGradeAndSectionArray() {
+    const sectionsSet = new Set<string>();
+    const gradesSet = new Set<number>();
+
+    this.students.forEach((student) => {
+      sectionsSet.add(student.section);
+      gradesSet.add(student.grade);
+    });
+    this.sections = Array.from(sectionsSet).sort(); // Ordenar secciones alfabéticamente
+    this.grades = Array.from(gradesSet).sort((a, b) => a - b); // Ordenar grados numéricamente
+    console.log(this.grades);
   }
 }
