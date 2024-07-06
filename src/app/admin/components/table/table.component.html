@@ -1,5 +1,5 @@
 <div>
-	<h2>Student Performance Chart</h2>
+	<!-- <h2>Student Performance Chart</h2> -->
 	<!-- <div id="chart">
 		<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
 			[plotOptions]="chartOptions.plotOptions" [dataLabels]="chartOptions.dataLabels">
@@ -44,14 +44,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let student of students ; let i = index">
+		<tr *ngFor="let student of students ; let i = index" class="text-center">
 			<td class="">{{student.code}}</td>
 			<td class="">{{student.name}} {{student.lastName}}</td>
 			<td class="">{{student.grade}} Grado</td>
 			<td class="">Sección {{student.section}}</td>
-			<td class="">
-				<!-- <app-chart [math]=student.performance.math [ct]=student.performance.ct></app-chart> -->
-				<div id="accordion-collapse" data-accordion="collapse">
+			<td class="block mx-auto w-fit">
+				<app-chart [math]=student.performance.math [ct]=student.performance.ct></app-chart>
+				<!-- <div id="accordion-collapse" data-accordion="collapse">
 					<h2 [id]="'accordion-collapse-heading-' + i">
 						<button type="button"
 							class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
@@ -79,7 +79,7 @@
 								websites even faster with components on top of Tailwind CSS.</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</td>
 		</tr>
 	</tbody>
